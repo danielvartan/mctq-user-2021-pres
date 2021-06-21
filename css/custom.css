@@ -1,27 +1,16 @@
-h4 {
-  font-family: 'Open Sans';
-  font-size: 30pt;
-}
-
-h5 {
-  font-family: 'Open Sans';
-  font-size: 28pt;
-}
-
-.title-slide h2 {
+.title-slide h1 {
   position: absolute;
-  bottom: 15%;
+  bottom: 22%;
   text-align: left;
   color: #454647;
   font-weight: bold;
 }
 
 .title-slide h3 {
-  margin-top: -60px;
+  position: relative;
+  top: 260px;
   text-align: left;
-  position: relative ;
-  top: 300px;
   color: #454647;
   font-weight: normal;
-  font-size: 80%;
+  margin-top: -30px;
 }

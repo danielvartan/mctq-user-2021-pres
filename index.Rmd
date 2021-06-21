@@ -1,16 +1,15 @@
 ---
-title: "mctq: An R Package for the Munich ChronoType Questionnaire"
-subtitle: "An R Package for the Munich ChronoType Questionnaire"
+title: "{mctq}: <br> An R Package for the Munich ChronoType Questionnaire"
 author: "Daniel Vartanian"
-institute: "Interdisciplinary Sleep Research Group (GIPSO)"
-date: "July/2021"
-bibliography: "bib/bibliography.bib"
+date: "July 2021"
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:
     chakra: "libs/remark-latest.min.js"
     css: ["useR", "useR-fonts", "css/custom.css"]
     lib_dir: "libs"
+    includes:
+      in_header: header.html
 ---
 
 ```{r, setup, include = FALSE}
@@ -27,7 +26,7 @@ xaringanExtra::use_clipboard()
 # xaringanExtra::use_editable(expires = 1)
 xaringanExtra::use_extra_styles(hover_code_line = TRUE)
 # xaringanExtra::use_fit_screen()
-xaringanExtra::use_freezeframe(responsive = FALSE)
+# xaringanExtra::use_freezeframe(responsive = FALSE)
 # xaringanExtra::use_logo(image_url = "img/logo.png")
 # xaringanExtra::use_panelset()
 # xaringanExtra::use_scribble()
@@ -43,14 +42,14 @@ xaringanExtra::use_webcam()
 library(metathis)
 meta() %>%
   meta_general(
-    description = "A gentle introduction to reproducible data workflows with the {mctq} package.",
+    description = "A introduction to the {mctq} package.",
     generator = "xaringan and remark.js") %>% 
   meta_name("github-repo" = "gipsousp/mctq.user2021") %>% 
   meta_social(
-    title = "mctq: An R Package for the Munich ChronoType Questionnaire",
-    url = "",
-    image = "",
-    image_alt = "",
+    title = "{mctq}: An R Package for the Munich ChronoType Questionnaire",
+    url = "https://gipsousp.github.io/mctq.user2021",
+    image = "https://gipsousp.github.io/mctq.user2021/cover.png",
+    image_alt = "The first slide of the Introduction to the {mctq} Package presentation",
     og_type = "website",
     og_author = "Daniel Vartanian",
     twitter_card_type = "summary_large_image",
@@ -72,9 +71,9 @@ The aim of `mctq` is to facilitate the work of sleep and chronobiology scientist
 knitr::include_graphics("img/logo.png")
 ```
 
-* Code repository: [https://github.com/gipsousp/mctq](https://github.com/gipsousp/mctq)
+Code repository: [https://github.com/gipsousp/mctq](https://github.com/gipsousp/mctq)
 
-* Documentation: [https://gipsousp.github.io/mctq](https://gipsousp.github.io/mctq)
+Documentation website: [https://gipsousp.github.io/mctq](https://gipsousp.github.io/mctq)
 ]
 
 ???
@@ -85,18 +84,27 @@ knitr::include_graphics("img/logo.png")
 
 ## Authors
 
-* Daniel Vartanian
-* Ana Amélia Benedito-Silva
-* Mario Pedrazzoli
-* 
+.custom_1[
+__[Daniel Vartanian](https://github.com/danielvartan)__. Author, maintainer, copyright holder. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0001-7782-759X)
 
+__[Ana Amelia Benedito-Silva](https://github.com/AnaAmeliaBeneditoSIlva)__. Author, scientific advisor. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0003-4976-2623)
 
+__[Mario Pedrazzoli](https://github.com/pedrazzo)__. Author, scientific advisor. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0002-5257-591X)
+
+__[Jonathan Keane](https://github.com/jonkeane)__. Reviewer. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0001-7087-9776)
+
+__[Mario Andre Leocadio-Miguel](https://github.com/leocadio-miguel)__. Reviewer. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0002-7248-3529)
+
+__[Interdisciplinary Sleep Research Group (GIPSO)](http://each.usp.br/gipso)__. Funder.
+
+__[University of Sao Paulo(USP)](http://usp.br/)__. Funder.
+]
 
 ---
 
 class: chapter-slide
 
-# What is the MCTQ?
+# What is MCTQ?
 
 ???
 
@@ -125,14 +133,6 @@ knitr::include_graphics("https://media.giphy.com/media/JDENkPiyQoCFW/giphy.gif")
 ```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
 knitr::include_graphics("https://media.giphy.com/media/ZcbHiTENuUmxa6w9Cu/giphy.gif")
 ```
-
----
-
-## But, how to measure this?
-
----
-
-## The MCTQ questionnaire
 
 ---
 
@@ -166,24 +166,6 @@ background-size: contain
 
 ---
 
-background-image: url("img/thewep_mctq-variables_1.png")
-background-position: center
-background-size: contain
-
----
-
-background-image: url("img/thewep_mctq-variables_2.png")
-background-position: center
-background-size: contain
-
----
-
-background-image: url("img/thewep_mctq-variables_3.png")
-background-position: center
-background-size: contain
-
----
-
 class: chapter-slide
 
 # The problem(s)
@@ -194,25 +176,27 @@ class: chapter-slide
 
 ---
 
+## Main challenges
+
 * MCTQ requires a lot of date/time manipulation
 * MCTQ deals with temporal objects detached from a timeline
-* Lack of consistency of computations
+* Lack of consistency in computations
 * Inconsistencies lead to irreproducible results
 
- These problems surface even more when dealing with a large dataset.
+These problems surface even more when dealing with a large dataset.
 
 ---
 
 ## Temporal objects
 
-Time objects demand more abstractions levels.
-
 .pull-left[
-* Time is not metric (except for seconds)
-* Time is cyclical (except for durations)
+Temporal objects demand more abstraction levels.
+
+* Time is not metric
+* Time is cyclical
 * Time is relational (itself does not exist)
 
-> Cool stuff: [Why Don't We Have Metric Time? | Answers With Joe](https://youtu.be/kUIYI34CdkE).
+Cool stuff: [Why Don't We Have Metric Time? | Answers With Joe](https://youtu.be/kUIYI34CdkE).
 ]
 
 .pull-right[
@@ -230,7 +214,7 @@ knitr::include_graphics("https://media.giphy.com/media/3o6MbjnP31zfxSI2Zi/giphy.
 
 class: chapter-slide
 
-# The `mctq` package
+# The {mctq} package
 
 ???
 
@@ -240,17 +224,84 @@ class: chapter-slide
 
 ## Installation
 
+``` {r, eval = FALSE}
+# install.packages("pak")
+pak::pkg_install("gipsousp/mctq")
+```
+
+```{r, message = FALSE}
+library(mctq)
+```
+
+
+---
+
+## Conversion
+
+`mctq` works with a set of object classes specially created to hold time values. These classes can be found in the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) packages from [tidyverse](https://www.tidyverse.org/packages/).
+
+```{r, message = FALSE}
+# From decimal hours to `hms`
+convert(6.5, "hms", input_unit = "H")
+# From radians to `Duration`
+convert(1.308997, "Duration", input_unit = "rad")
+# From `character` `HM AM/PM ` to `hms`
+convert("10:00 PM", "hms", orders = "IMp")
+```
+
+---
+
 ## Workdays and work-free days variables
+
+---
 
 ## Combining workdays and work-free days variables
 
+---
+
+## Data
+
+The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
+
+```{r, echo = FALSE, out.width = "100%", out.height = "100%"}
+library(DT)
+library(mctq)
+DT::datatable(mctq::pretty_mctq(mctq::micro_mctq), 
+              extensions = "KeyTable",
+              filter = "none",
+              options = list(dom = "tp",
+                             pageLength = 6,
+                             scrollX = TRUE))
+```
+
+---
+
 ## Utilities
+
+In addition to `convert()`, `mctq` is also equipped with many other utility functions.
+
+```{r}
+random_mctq(model = "standard") %>% head(5)
+```
+
+---
+
+## Documentation
+
+`mctq` is fully documented. Learn more in [gipsousp.github.io/mctq](gipsousp.github.io/mctq).
+
+```{r, echo = FALSE}
+knitr::include_url("https://gipsousp.github.io/mctq/reference/msf_sc.html")
+```
+
+
+
 
 ---
 
 class: chapter-slide
 
-# Final considerations
+# Final remarks
 
 ???
 
@@ -272,222 +323,3 @@ class: chapter-slide
 class: chapter-slide
 
 # Thank you!
-
----
-
-class: chapter-slide
-
-# TEMP
-
----
-
-
-# Header 1
-
-## Header 2
-
-### Header 3
-
-#### Header 4
-
-##### Header 5
-
----
-
-## Bullet points
-
-* Test
-* Test
-  + Test
-  + Test
-    - Test
-    - Test
-* Test
-
----
-
-## List points
-
-1. Test
-1. Test
-  + Test
-  + Test
-    - Test
-    - Test
-1. Test
-
----
-
-## Alignment
-
-.left[
-## Left
-
-Some text
-]
-
-.center[
-## Center
-
-Some text
-]
-
-.right[
-## Right
-
-Some text
-]
-
----
-
-## Alignment
-
-```{r, fig.align = "left", out.width = "5%"}
-# fig.align = "left", out.width = "5%"
-knitr::include_graphics("img/logo.png")
-```
-
-```{r, fig.align = "center", out.width = "5%"}
-# fig.align = "center", out.width = "5%"
-knitr::include_graphics("img/logo.png")
-```
-
-```{r, fig.align = "right", out.width = "5%"}
-# fig.align = "right", out.width = "5%"
-knitr::include_graphics("img/logo.png")
-```
-
----
-
-## Two-column layout
-
-Pull left/right
-
-.pull-left[
-Some text
-
-* Test 1
-* Test 2
-]
-
-.pull-right[
-Some text
-
-* Test 1
-* Test 2
-]
-
----
-
-## Two-column layout
-
-Left/right column
-
-.left-column[
-Some text
-
-* Test 1
-* Test 2
-]
-
-.right-column[
-Some text
-
-* Test 1
-* Test 2
-]
-
----
-
-### Code chunk
-
-```{r}
-# some code
-seq(1:5)
-```
-
----
-
-## Table test: `mctq::std_mctq`
-
-.table[
-```{r, echo = FALSE, out.width = "100%", out.height = "100%"}
-library(DT)
-library(mctq)
-# knitr::kable(mctq::std_mctq, 'html')
-DT::datatable(mctq::pretty_mctq(mctq::std_mctq), 
-              extensions = "KeyTable",
-              filter = "none",
-              options = list(dom = "tp",
-                             pageLength = 8,
-                             scrollX = TRUE))
-```
-]
-
----
-
-## Creating some plots
-
-We will use the [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) package to create some colorblind-friendly plots. 
-Let's see how the graph looks like with various color-vision-deficiency [simulations](https://github.com/clauswilke/colorblindr):
-
-```{r, echo=FALSE, message=FALSE}
-library(ggplot2)
-library(colorblindr)
-library(viridis)
-
-theme_useR <- function(base_size = 28) {
-  theme_bw(base_size = base_size) + 
-    theme(legend.margin = margin(), legend.title = element_blank())
-}
-```
-
-```{r}
-fig <- ggplot(iris, aes(Sepal.Length, fill = Species)) + 
-  geom_density(alpha = 0.7) + theme_useR() + 
-  theme(legend.position = c(0.8, 0.9),legend.margin = margin(),
-        legend.title = element_blank()) 
-fig_grid <- cvd_grid(fig)
-```
-
-.center[
-```{r,echo=FALSE, fig.show="hold", out.width="40%"}
-fig
-cvd_grid(ggplot(iris, aes(Sepal.Length, fill = Species)) + 
-  geom_density(alpha = 0.7) + theme_useR(base_size = 18) + 
-  theme(legend.position = c(0.7, 0.8)) )
-
-```
-]
-
----
-
-Let's use a color scale that works better
-
-
-```{r}
-fig2 <- ggplot(iris, aes(Sepal.Length, fill = Species)) + 
-  geom_density(alpha = 0.8) + theme_useR() + 
-  theme(legend.position = c(0.8, 0.9))+ 
-  scale_fill_viridis(discrete = TRUE)
-fig_grid2 <- cvd_grid(fig2)
-```
-
-
-```{r,echo=FALSE, fig.show="hold", out.width="48%"}
-fig2
-cvd_grid(ggplot(iris, aes(Sepal.Length, fill = Species)) + 
-  geom_density(alpha = 0.8) + theme_useR(base_size = 18) + 
-  theme(legend.position = c(0.7, 0.8))+ scale_fill_viridis(discrete = TRUE) ) 
-```
-
----
-
-## Do not forget to include alt-text to your figures!
-
-Knitr (version >= 1.31) have a new feature to add alt-text to your figures. Just add fig.alt = "Your alt-text” in the chunk options.
-
-```{r,echo=FALSE, fig.show="hold", out.width="40%", fig.alt="Two ggplot panels, comparing default ggplot2 colors versus the ggplot2 result using viridis color palette. Each panel shows three superposed color-filled histograms. The default scale uses the colors salmon, light green and light blue, but viridis scale uses purple, aquamarine and yellow, which gives a better contrast."}
-fig
-fig2
-```
