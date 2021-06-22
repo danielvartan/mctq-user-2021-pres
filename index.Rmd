@@ -128,10 +128,70 @@ knitr::include_graphics("https://media.giphy.com/media/JDENkPiyQoCFW/giphy.gif")
 
 ---
 
-## Chronotypes
+## Chronotypes: temporal phenotypes
+
+See also: Roenneberg, Pilz, Zerbini, & Winnebeck ([2019](https://doi.org/10.3390/biology8030054)).
 
 ```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
-knitr::include_graphics("https://media.giphy.com/media/ZcbHiTENuUmxa6w9Cu/giphy.gif")
+knitr::include_graphics("https://media.giphy.com/media/3o7aD0v27NBhhOfdXW/giphy.gif")
+```
+
+---
+
+## Morning-Evening spectrum
+
+```{r, echo = FALSE, fig.align = 'center', fig.width = 10, fig.height = 6, message = FALSE}
+library(dplyr)
+library(ggplot2)
+library(hms)
+library(lubridate)
+library(mctq)
+library(scales)
+
+mean <- hms::parse_hm("05:02")
+sd <- hms::parse_hm("01:32")
+i <- 1000
+set.seed(20)
+
+labels_ <- function(x, jump_even = TRUE, jump_odd = FALSE, jump_one = FALSE) {
+    breaks <- x %>%
+        lubridate::as_datetime() %>%
+        hms::as_hms() %>%
+        substr(1, 5)
+
+    if (isTRUE(jump_even)) breaks[seq_along(breaks) %% 2 == 0] <- ""
+    if (isTRUE(jump_odd)) breaks[!seq_along(breaks) %% 2 == 0] <- ""
+    if (isTRUE(jump_one)) breaks[seq_along(breaks) %% 3 == 0] <- ""
+
+    breaks
+}
+
+classify <- function(x) {
+    x <- as.numeric(x)
+    quantiles <- stats::quantile(x, seq(from = 0, to = 1, by = 1 / 3))
+
+    factor(cut(x, quantiles, labels = FALSE, include.lowest = TRUE),
+           labels = c("Morning type",
+                      "Intermediary",
+                      "Evening type"))
+}
+
+dplyr::tibble(msf_sc = hms::hms(rnorm(i, mean, sd))) %>%
+    dplyr::mutate(msf_sc = mctq:::midday_change(msf_sc)) %>%
+    dplyr::mutate(msf_sc = as.numeric(msf_sc)) %>%
+    ggplot2::ggplot(aes(msf_sc, fill = classify(msf_sc))) +
+    ggplot2::geom_bar() +
+    ggplot2::scale_x_binned(n.breaks = 15,
+                            labels = labels_) +
+    ggplot2::labs(x = "Corrected mid-sleep ('msf_sc')",
+                  y = "",
+                  fill = "Chronotype") +
+    scale_fill_viridis_d() +
+  ggplot2::theme(axis.title = element_text(size = 20),
+                 axis.text = element_text(size = 20),
+                 legend.title = element_text(size = 20),
+                 legend.text = element_text(size = 20))
+
 ```
 
 ---
@@ -181,9 +241,7 @@ class: chapter-slide
 * MCTQ requires a lot of date/time manipulation
 * MCTQ deals with temporal objects detached from a timeline
 * Lack of consistency in computations
-* Inconsistencies lead to irreproducible results
-
-These problems surface even more when dealing with a large dataset.
+* Inconsistencies can lead to irreproducible results
 
 ---
 
@@ -238,7 +296,7 @@ library(mctq)
 
 ## Conversion
 
-`mctq` works with a set of object classes specially created to hold time values. These classes can be found in the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) packages from [tidyverse](https://www.tidyverse.org/packages/).
+`mctq` works with a set of object classes specially created to hold time values. These classes can be found in the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) packages from [tidyverse](https://www.tidyverse.org/packages/). If your data do not conform to the object classes required, you can use `mctq` `convert()` function to convert it.
 
 ```{r, message = FALSE}
 # From decimal hours to `hms`
@@ -253,9 +311,74 @@ convert("10:00 PM", "hms", orders = "IMp")
 
 ## Workdays and work-free days variables
 
+After your data is set to start, just use the `mctq` functions below to process it.
+
+Note that the `mctq` functions uses a similar naming scheme to that used in the MCTQ publications. That makes it easy to find and apply any computation necessary.
+
+* `fd()`: compute MCTQ work-free days
+* `so()`: compute MCTQ local time of sleep onset
+* `gu()`: compute MCTQ local time of getting out of bed
+* `sd()`: compute MCTQ sleep duration
+* `tbt()`: compute MCTQ total time in bed
+* `ms()`: compute MCTQ local time of mid-sleep
+* `napd()`: compute MCTQ nap duration (only for MCTQ Shift)
+* `sd24()`: compute MCTQ 24 hours sleep duration (only for MCTQ Shift)
+
+---
+
+## Workdays and work-free days variables
+
+Example:
+
+```{r, message = FALSE}
+# Local time of preparing to sleep on workdays
+sprep_w <- c(hms::parse_hms("23:45:00"), hms::parse_hms("02:15:00"))
+# Sleep latency or time to fall asleep after preparing to sleep on workdays
+slat_w <- c(lubridate::dminutes(30), lubridate::dminutes(90))
+# Local time of sleep onset on workdays
+so(sprep_w, slat_w)
+```
+
 ---
 
 ## Combining workdays and work-free days variables
+
+For computations combining workdays and work-free days, use:
+
+* `sd_week()`: compute MCTQ average weekly sleep duration
+* `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ Shift)
+* `sloss_week()`: compute MCTQ weekly sleep loss
+* `le_week()`: compute MCTQ average weekly light exposure
+* `msf_sc()`: compute MCTQ chronotype or corrected local time of mid-sleep on work-free days
+* `sjl_rel()` and `sjl()`: compute MCTQ social jet lag
+* `sjl_weighted()`: compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift)
+
+---
+
+## Combining workdays and work-free days variables
+
+Example:
+
+```{r, message = FALSE}
+# Local time of mid-sleep on workdays
+msw <- c(hms::parse_hms("02:05:00"), hms::parse_hms("04:05:00"))
+# Local time of mid-sleep on work-free days
+msf <- c(hms::parse_hms("23:05:00"), hms::parse_hms("08:30:00"))
+# Relative social jetlag
+sjl_rel(msw, msf)
+```
+
+See a quick tour of all MCTQ main functions at https://gipsousp.github.io/mctq/articles/mctq.html.
+
+---
+
+## Utilities
+
+In addition to `convert()`, `mctq` is also equipped with many other utility functions.
+
+```{r}
+random_mctq(model = "standard") %>% head(5)
+```
 
 ---
 
@@ -276,16 +399,6 @@ DT::datatable(mctq::pretty_mctq(mctq::micro_mctq),
 
 ---
 
-## Utilities
-
-In addition to `convert()`, `mctq` is also equipped with many other utility functions.
-
-```{r}
-random_mctq(model = "standard") %>% head(5)
-```
-
----
-
 ## Documentation
 
 `mctq` is fully documented. Learn more in [gipsousp.github.io/mctq](gipsousp.github.io/mctq).
@@ -293,9 +406,6 @@ random_mctq(model = "standard") %>% head(5)
 ```{r, echo = FALSE}
 knitr::include_url("https://gipsousp.github.io/mctq/reference/msf_sc.html")
 ```
-
-
-
 
 ---
 
@@ -312,10 +422,9 @@ class: chapter-slide
 ## Notes
 
 * `mctq` is [maturing](https://lifecycle.r-lib.org/articles/stages.html)
-* `mctq` is fully documented
 * `mctq` is currently under a [rOpenSci peer review](https://github.com/ropensci/software-review/issues/434)
 * `mctq` will be submitted to CRAN soon
-* We plan to invite MCTQ authors to review and author the package
+* We plan to invite the MCTQ authors to review and author the package
 * An article about `mctq` will be published soon
 
 ---
