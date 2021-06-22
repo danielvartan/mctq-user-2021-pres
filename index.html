@@ -16,21 +16,21 @@
     <script src="libs/tile-view-0.2.6/tile-view.js"></script>
     <script src="libs/xaringanExtra-webcam-0.0.1/webcam.js"></script>
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
-    <meta name="description" content="An introduction to the {mctq} package."/>
+    <meta name="description" content="A brief introduction to the {mctq} package."/>
     <meta name="generator" content="xaringan and remark.js"/>
     <meta name="github-repo" content="gipsousp/mctq.user2021"/>
     <meta name="twitter:title" content="{mctq}: An R Package for the Munich ChronoType Questionnaire"/>
-    <meta name="twitter:description" content="An introduction to the {mctq} package."/>
+    <meta name="twitter:description" content="A brief introduction to the {mctq} package."/>
     <meta name="twitter:url" content="https://gipsousp.github.io/mctq.user2021"/>
-    <meta name="twitter:image:src" content="https://gipsousp.github.io/mctq.user2021/cover.png"/>
+    <meta name="twitter:image:src" content="https://gipsousp.github.io/mctq.user2021/img/cover.png"/>
     <meta name="twitter:image:alt" content="The first slide of the Introduction to the {mctq} Package presentation"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@danielvartan"/>
     <meta name="twitter:site" content="@danielvartan"/>
     <meta property="og:title" content="{mctq}: An R Package for the Munich ChronoType Questionnaire"/>
-    <meta property="og:description" content="An introduction to the {mctq} package."/>
+    <meta property="og:description" content="A brief introduction to the {mctq} package."/>
     <meta property="og:url" content="https://gipsousp.github.io/mctq.user2021"/>
-    <meta property="og:image" content="https://gipsousp.github.io/mctq.user2021/cover.png"/>
+    <meta property="og:image" content="https://gipsousp.github.io/mctq.user2021/img/cover.png"/>
     <meta property="og:image:alt" content="The first slide of the Introduction to the {mctq} Package presentation"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
@@ -91,72 +91,30 @@ The aim of `mctq` is to facilitate the work of sleep and chronobiology scientist
 ]
 
 .pull-right[
-&lt;img src="img/logo.png" width="50%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/logo.png" title="Hex logo of the {mctq} R package" alt="Hex logo of the {mctq} R package" width="50%" style="display: block; margin: auto;" /&gt;
 
 Code repository: [https://github.com/gipsousp/mctq](https://github.com/gipsousp/mctq)
 
 Documentation website: [https://gipsousp.github.io/mctq](https://gipsousp.github.io/mctq)
 ]
 
-???
-
-00:00 -&gt; 00:30
-
----
-
-## Authors
-
-.custom_1[
-__[Daniel Vartanian](https://github.com/danielvartan)__. Author, maintainer, copyright holder. [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#A6CE39;overflow:visible;position:relative;"><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>](https://orcid.org/0000-0001-7782-759X)
-
-__[Ana Amelia Benedito-Silva](https://github.com/AnaAmeliaBeneditoSIlva)__. Author, scientific advisor. [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#A6CE39;overflow:visible;position:relative;"><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>](https://orcid.org/0000-0003-4976-2623)
-
-__[Mario Pedrazzoli](https://github.com/pedrazzo)__. Author, scientific advisor. [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#A6CE39;overflow:visible;position:relative;"><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>](https://orcid.org/0000-0002-5257-591X)
-
-__[Jonathan Keane](https://github.com/jonkeane)__. Reviewer. [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#A6CE39;overflow:visible;position:relative;"><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>](https://orcid.org/0000-0001-7087-9776)
-
-__[Mario Andre Leocadio-Miguel](https://github.com/leocadio-miguel)__. Reviewer. [<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:#A6CE39;overflow:visible;position:relative;"><path d="M294.75 188.19h-45.92V342h47.47c67.62 0 83.12-51.34 83.12-76.91 0-41.64-26.54-76.9-84.67-76.9zM256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-80.79 360.76h-29.84v-207.5h29.84zm-14.92-231.14a19.57 19.57 0 1 1 19.57-19.57 19.64 19.64 0 0 1-19.57 19.57zM300 369h-81V161.26h80.6c76.73 0 110.44 54.83 110.44 103.85C410 318.39 368.38 369 300 369z"/></svg>](https://orcid.org/0000-0002-7248-3529)
-
-__[Interdisciplinary Sleep Research Group (GIPSO)](http://each.usp.br/gipso)__. Funder.
-
-__[University of Sao Paulo (USP)](http://usp.br/)__. Funder.
-]
-
 ---
 
 class: chapter-slide
 
-# What is MCTQ?
-
-???
-
-00:31 -&gt; 01:30
-
----
-
-## A (very) brief history of time and life
-
-.pull-left[
-&lt;img src="https://media.giphy.com/media/l1J9RYDHqVp5phcYw/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
-]
-
-.pull-right[
-&lt;img src="https://media.giphy.com/media/JDENkPiyQoCFW/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
-]
+# What is the MCTQ?
 
 ---
 
 ## Chronotypes: temporal phenotypes
 
-See also: Roenneberg, Pilz, Zerbini, &amp; Winnebeck ([2019](https://doi.org/10.3390/biology8030054)).
+.pull-left[
+The MCTQ questionnaire is a chronotyping tool that measures peoples’ sleep-wake behavior, using it as a proxy to assess circadian phenotypes. That is, temporal characteristics expressed in periods of about a day, usually represented by diurnal preferences in a morning-evening spectrum.
+]
 
-&lt;img src="https://media.giphy.com/media/3o7aD0v27NBhhOfdXW/giphy.gif" width="50%" style="display: block; margin: auto;" /&gt;
-
----
-
-background-image: url("img/article_1.png")
-background-position: center
-background-size: contain
+.pull.right[
+&lt;img src="https://media.giphy.com/media/3o7aD0v27NBhhOfdXW/giphy.gif" title="A gif animation showing a 'morning' and an 'evening' dog with a legend that says 'Morning people vs Me'." alt="A gif animation showing a 'morning' and an 'evening' dog with a legend that says 'Morning people vs Me'." width="50%" style="display: block; margin: auto;" /&gt;
+]
 
 ---
 
@@ -172,46 +130,11 @@ background-size: contain
 
 ---
 
-class: chapter-slide
-
-# The problem(s)
-
-???
-
-01:31 -&gt; 02:30
-
----
-
 ## Main challenges
 
 * MCTQ requires a lot of date/time manipulation
-* MCTQ deals with temporal objects detached from a timeline
 * Lack of consistency in computations
 * Inconsistencies can lead to irreproducible results
-
----
-
-## Temporal objects
-
-.pull-left[
-Temporal objects comes with more levels of abstraction.
-
-* Time is not metrical
-* Time data can assume many formats
-* Time is cyclical
-* Time is relational (itself does not exist)
-
-Cool stuff: [Why Don't We Have Metric Time? | Answers With Joe](https://youtu.be/kUIYI34CdkE).
-]
-
-.pull-right[
-&lt;img src="https://media.giphy.com/media/3o6MbjnP31zfxSI2Zi/giphy.gif" width="100%" style="display: block; margin: auto;" /&gt;
-]
-
-???
-
-* Duodecimal (base 12) and sexagesimal (base 60) systems.
-* Time frames (e.g., 24, 12, 60)
 
 ---
 
@@ -219,13 +142,11 @@ class: chapter-slide
 
 # The {mctq} package
 
-???
-
-02:31 -&gt; 04:30
-
 ---
 
 ## Installation
+
+At the moment, `mctq` is under a [software peer review]((https://github.com/ropensci/software-review/issues/434)) with the rOpenSci initiative and can only be installed with a remote installer like the {remotes} or {pak} package.
 
 
 ```r
@@ -237,7 +158,6 @@ pak::pkg_install("gipsousp/mctq")
 ```r
 library(mctq)
 ```
-
 
 ---
 
@@ -253,15 +173,6 @@ convert(6.5, "hms", input_unit = "H")
 
 ```
 ## 06:30:00
-```
-
-```r
-# From radians to `Duration`
-convert(1.308997, "Duration", input_unit = "rad")
-```
-
-```
-## [1] "18000s (~5 hours)"
 ```
 
 ```r
@@ -347,48 +258,20 @@ sjl_rel(msw, msf)
 
 ---
 
-## Utilities
+## Utilities and data
 
-In addition to `convert()`, `mctq` is also equipped with many other utility functions.
+In addition to `convert()`, `mctq` is also equipped with many other utility functions. The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
 
-
-```r
-random_mctq(model = "standard") %&gt;% head(5)
-```
-
-```
-## $work
-## [1] TRUE
-## 
-## $wd
-## [1] 5
-## 
-## $bt_w
-## 22:55:00
-## 
-## $sprep_w
-## 22:55:00
-## 
-## $slat_w
-## [1] "600s (~10 minutes)"
-```
-
----
-
-## Data
-
-The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
-
-<div id="htmlwidget-e20cb676a755fab4c314" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-e20cb676a755fab4c314">{"x":{"filter":"none","extensions":["KeyTable"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,null,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,null,false,false,false,false,false,false,false,false,null,false,false,false,false,false,false,false],[2,7,5,5,2,5,3,5,7,2,3,2,5,7,5,3,5,null,null,5,6,5,null,1,2,5,1,5,6,1,4,6,5,null,5,5,1,3,null,5,5,5,null,1,5,7,5,5,5,5],[5,0,2,2,5,2,4,2,0,5,4,5,2,0,2,4,2,null,null,2,1,2,null,6,5,2,6,2,1,6,3,1,2,null,2,2,6,4,null,2,2,2,null,6,2,0,2,2,2,2],["21:45:00","23:15:00","23:00:00","01:45:00","23:45:00","00:00:00","22:30:00","23:25:00","23:50:00","01:00:00","23:25:00","01:05:00","00:00:00","23:40:00","23:35:00","00:00:00","23:20:00",null,null,"00:00:00",null,"00:00:00",null,"23:25:00","01:45:00","22:25:00","00:00:00","23:15:00","00:00:00","22:05:00","22:25:00","23:45:00","23:15:00",null,"23:20:00","00:00:00","23:20:00","21:40:00",null,"23:55:00","23:10:00","22:55:00",null,"00:00:00","00:00:00","00:00:00","00:00:00","00:00:00","23:20:00","23:45:00"],["09:15:00","06:25:00","05:50:00","06:30:00","05:35:00","06:45:00","07:35:00","07:35:00","07:40:00","08:00:00","05:05:00","10:45:00","07:50:00","06:30:00","05:25:00","07:15:00","04:35:00",null,null,"04:25:00",null,"07:40:00",null,"07:50:00","07:55:00","05:30:00","07:20:00","04:40:00","06:50:00","04:50:00","07:40:00","04:55:00","07:15:00",null,"05:40:00","07:40:00","05:25:00","05:30:00","12:15:00","05:10:00","07:00:00","05:45:00",null,"08:00:00","06:40:00","07:00:00","09:40:00","06:45:00","06:55:00","08:30:00"],["11:30:00","07:10:00","06:50:00","04:45:00","05:50:00","06:45:00","09:05:00","08:10:00","07:50:00","07:00:00","05:40:00","09:40:00","07:50:00","06:50:00","05:50:00","07:15:00","05:15:00",null,null,"04:25:00",null,"07:40:00",null,"08:25:00","06:10:00","07:05:00","07:20:00","05:25:00","06:50:00","06:45:00","09:15:00","05:10:00","08:00:00",null,"06:20:00","07:40:00","06:05:00","07:50:00",null,"05:15:00","07:50:00","06:50:00",null,"08:00:00","06:40:00","07:00:00","09:40:00","06:45:00","07:35:00","08:45:00"],["03:30:00","02:50:00","02:25:00","04:07:30","02:40:00","03:22:30","03:02:30","03:30:00","03:45:00","04:30:00","02:15:00","05:55:00","03:55:00","03:05:00","02:30:00","03:37:30","01:57:30",null,null,"02:12:30",null,"03:50:00",null,"03:37:30","04:50:00","01:57:30","03:40:00","01:57:30","03:25:00","01:27:30","03:02:30","02:20:00","03:15:00",null,"02:30:00","03:50:00","02:22:30","01:35:00",null,"02:32:30","03:05:00","02:20:00",null,"04:00:00","03:20:00","03:30:00","04:50:00","03:22:30","03:07:30","04:07:30"],["00:35:00","23:25:00","03:05:00","02:45:00","02:15:00","01:55:00","01:45:00","00:00:00","23:55:00",null,"00:00:00","02:40:00","02:25:00",null,"02:40:00","01:30:00","01:45:00",null,null,"02:10:00","22:45:00","01:50:00","05:30:00","00:00:00","01:50:00","23:55:00","01:50:00","01:25:00","00:00:00","03:00:00","02:05:00","02:30:00","02:30:00",null,"01:25:00","01:55:00","01:20:00","02:50:00",null,"01:50:00","23:10:00","03:00:00",null,"01:40:00","00:00:00","01:45:00","01:35:00","00:00:00","01:35:00","01:45:00"],["06:00:00","07:20:00","10:30:00","12:00:00","10:30:00","10:25:00","11:00:00","10:05:00","08:50:00",null,"09:15:00","12:40:00","11:20:00",null,"10:10:00","13:50:00","11:25:00",null,null,"09:35:00","06:00:00","10:40:00","15:00:00","10:35:00","11:30:00","08:10:00","11:20:00","08:55:00","10:50:00","12:10:00","12:50:00","09:50:00","10:00:00",null,"09:40:00","10:40:00","12:50:00","10:35:00","14:12:00","11:15:00","07:00:00","11:40:00",null,"11:15:00","08:35:00","09:10:00","11:05:00","07:50:00","10:35:00","11:15:00"],["05:25:00","07:55:00","07:25:00","09:15:00","08:15:00","08:30:00","09:15:00","10:05:00","08:55:00",null,"09:15:00","10:00:00","08:55:00",null,"07:30:00","12:20:00","09:40:00",null,null,"07:25:00","07:15:00","08:50:00","09:30:00","10:35:00","09:40:00","08:15:00","09:30:00","07:30:00","10:50:00","09:10:00","10:45:00","07:20:00","07:30:00",null,"08:15:00","08:45:00","11:30:00","07:45:00",null,"09:25:00","07:50:00","08:40:00",null,"09:35:00","08:35:00","07:25:00","09:30:00","07:50:00","09:00:00","09:30:00"],["03:17:30","03:22:30","06:47:30","07:22:30","06:22:30","06:10:00","06:22:30","05:02:30","04:22:30",null,"04:37:30","07:40:00","06:52:30",null,"06:25:00","07:40:00","06:35:00",null,null,"05:52:30","02:22:30","06:15:00","10:15:00","05:17:30","06:40:00","04:02:30","06:35:00","05:10:00","05:25:00","07:35:00","07:27:30","06:10:00","06:15:00",null,"05:32:30","06:17:30","07:05:00","06:42:30",null,"06:32:30","03:05:00","07:20:00",null,"06:27:30","04:17:30","05:27:30","06:20:00","03:55:00","06:05:00","06:30:00"],["07:09:17","07:10:00","07:00:00","06:02:09","07:33:34","07:15:00","09:10:43","08:42:51","07:50:00",null,"07:42:51","09:54:17","08:08:34","06:50:00","06:18:34","10:09:17","06:30:43",null,null,"05:16:26",null,"08:00:00",null,"10:16:26","08:40:00","07:25:00","09:11:26","06:00:43","07:24:17","08:49:17","09:53:34","05:28:34","07:51:26",null,"06:52:51","07:58:34","10:43:34","07:47:09",null,"06:26:26","07:50:00","07:21:26",null,"09:21:26","07:12:51","07:00:00","09:37:09","07:03:34","07:59:17","08:57:51"],["08:41:26","00:00:00","00:50:00","06:25:43","03:27:09","02:30:00","00:17:09","02:44:17","00:00:00",null,"06:08:34","00:28:34","01:32:51",null,"02:22:51","08:42:51","06:18:34",null,null,"04:17:09",null,"01:40:00",null,"01:51:26","05:00:00","01:40:00","01:51:26","02:58:34","03:25:43","02:04:17","02:34:17","01:51:26","00:42:51",null,"02:44:17","01:32:51","04:38:34","00:08:34",null,"05:57:09","00:00:00","02:37:09",null,"01:21:26","02:44:17","00:00:00","00:14:17","01:32:51","02:01:26","01:04:17"],["03:17:30","03:00:00","06:35:00","05:46:04","06:01:47","05:32:30","06:20:21","04:21:26","03:50:00",null,"03:51:26","07:37:09","06:29:17",null,"05:49:17","06:34:39","05:00:21",null,null,"04:48:13",null,"05:50:00",null,"05:08:13","06:10:00","03:37:30","06:25:43","04:25:21","03:42:09","07:24:39","07:01:47","05:14:17","06:15:00",null,"04:51:26","05:54:17","06:41:47","06:42:30",null,"05:03:13","03:05:00","06:40:43",null,"06:20:43","03:36:26","05:15:00","06:20:00","03:31:47","05:34:39","06:13:56"],["-00:12:30","00:32:30","04:22:30","03:15:00","03:42:30","02:47:30","03:20:00","01:32:30","00:37:30",null,"02:22:30","01:45:00","02:57:30",null,"03:55:00","04:02:30","04:37:30",null,null,"03:40:00",null,"02:25:00",null,"01:40:00","01:50:00","02:05:00","02:55:00","03:12:30","02:00:00","06:07:30","04:25:00","03:50:00","03:00:00",null,"03:02:30","02:27:30","04:42:30","05:07:30",null,"04:00:00","00:00:00","05:00:00",null,"02:27:30","00:57:30","01:57:30","01:30:00","00:32:30","02:57:30","02:22:30"],["00:12:30","00:32:30","04:22:30","03:15:00","03:42:30","02:47:30","03:20:00","01:32:30","00:37:30",null,"02:22:30","01:45:00","02:57:30",null,"03:55:00","04:02:30","04:37:30",null,null,"03:40:00",null,"02:25:00",null,"01:40:00","01:50:00","02:05:00","02:55:00","03:12:30","02:00:00","06:07:30","04:25:00","03:50:00","03:00:00",null,"03:02:30","02:27:30","04:42:30","05:07:30",null,"04:00:00","00:00:00","05:00:00",null,"02:27:30","00:57:30","01:57:30","01:30:00","00:32:30","02:57:30","02:22:30"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>shift_work<\/th>\n      <th>wd<\/th>\n      <th>fd<\/th>\n      <th>so_w<\/th>\n      <th>se_w<\/th>\n      <th>sd_w<\/th>\n      <th>msw<\/th>\n      <th>so_f<\/th>\n      <th>se_f<\/th>\n      <th>sd_f<\/th>\n      <th>msf<\/th>\n      <th>sd_week<\/th>\n      <th>sloss_week<\/th>\n      <th>msf_sc<\/th>\n      <th>sjl_rel<\/th>\n      <th>sjl<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","pageLength":6,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cb68a13dfdae516a19db" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cb68a13dfdae516a19db">{"x":{"filter":"none","extensions":["KeyTable"],"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],[false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,null,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,null,false,false,false,false,false,false,false,false,null,false,false,false,false,false,false,false],[2,7,5,5,2,5,3,5,7,2,3,2,5,7,5,3,5,null,null,5,6,5,null,1,2,5,1,5,6,1,4,6,5,null,5,5,1,3,null,5,5,5,null,1,5,7,5,5,5,5],[5,0,2,2,5,2,4,2,0,5,4,5,2,0,2,4,2,null,null,2,1,2,null,6,5,2,6,2,1,6,3,1,2,null,2,2,6,4,null,2,2,2,null,6,2,0,2,2,2,2],["21:45:00","23:15:00","23:00:00","01:45:00","23:45:00","00:00:00","22:30:00","23:25:00","23:50:00","01:00:00","23:25:00","01:05:00","00:00:00","23:40:00","23:35:00","00:00:00","23:20:00",null,null,"00:00:00",null,"00:00:00",null,"23:25:00","01:45:00","22:25:00","00:00:00","23:15:00","00:00:00","22:05:00","22:25:00","23:45:00","23:15:00",null,"23:20:00","00:00:00","23:20:00","21:40:00",null,"23:55:00","23:10:00","22:55:00",null,"00:00:00","00:00:00","00:00:00","00:00:00","00:00:00","23:20:00","23:45:00"],["09:15:00","06:25:00","05:50:00","06:30:00","05:35:00","06:45:00","07:35:00","07:35:00","07:40:00","08:00:00","05:05:00","10:45:00","07:50:00","06:30:00","05:25:00","07:15:00","04:35:00",null,null,"04:25:00",null,"07:40:00",null,"07:50:00","07:55:00","05:30:00","07:20:00","04:40:00","06:50:00","04:50:00","07:40:00","04:55:00","07:15:00",null,"05:40:00","07:40:00","05:25:00","05:30:00","12:15:00","05:10:00","07:00:00","05:45:00",null,"08:00:00","06:40:00","07:00:00","09:40:00","06:45:00","06:55:00","08:30:00"],["11:30:00","07:10:00","06:50:00","04:45:00","05:50:00","06:45:00","09:05:00","08:10:00","07:50:00","07:00:00","05:40:00","09:40:00","07:50:00","06:50:00","05:50:00","07:15:00","05:15:00",null,null,"04:25:00",null,"07:40:00",null,"08:25:00","06:10:00","07:05:00","07:20:00","05:25:00","06:50:00","06:45:00","09:15:00","05:10:00","08:00:00",null,"06:20:00","07:40:00","06:05:00","07:50:00",null,"05:15:00","07:50:00","06:50:00",null,"08:00:00","06:40:00","07:00:00","09:40:00","06:45:00","07:35:00","08:45:00"],["03:30:00","02:50:00","02:25:00","04:07:30","02:40:00","03:22:30","03:02:30","03:30:00","03:45:00","04:30:00","02:15:00","05:55:00","03:55:00","03:05:00","02:30:00","03:37:30","01:57:30",null,null,"02:12:30",null,"03:50:00",null,"03:37:30","04:50:00","01:57:30","03:40:00","01:57:30","03:25:00","01:27:30","03:02:30","02:20:00","03:15:00",null,"02:30:00","03:50:00","02:22:30","01:35:00",null,"02:32:30","03:05:00","02:20:00",null,"04:00:00","03:20:00","03:30:00","04:50:00","03:22:30","03:07:30","04:07:30"],["00:35:00","23:25:00","03:05:00","02:45:00","02:15:00","01:55:00","01:45:00","00:00:00","23:55:00",null,"00:00:00","02:40:00","02:25:00",null,"02:40:00","01:30:00","01:45:00",null,null,"02:10:00","22:45:00","01:50:00","05:30:00","00:00:00","01:50:00","23:55:00","01:50:00","01:25:00","00:00:00","03:00:00","02:05:00","02:30:00","02:30:00",null,"01:25:00","01:55:00","01:20:00","02:50:00",null,"01:50:00","23:10:00","03:00:00",null,"01:40:00","00:00:00","01:45:00","01:35:00","00:00:00","01:35:00","01:45:00"],["06:00:00","07:20:00","10:30:00","12:00:00","10:30:00","10:25:00","11:00:00","10:05:00","08:50:00",null,"09:15:00","12:40:00","11:20:00",null,"10:10:00","13:50:00","11:25:00",null,null,"09:35:00","06:00:00","10:40:00","15:00:00","10:35:00","11:30:00","08:10:00","11:20:00","08:55:00","10:50:00","12:10:00","12:50:00","09:50:00","10:00:00",null,"09:40:00","10:40:00","12:50:00","10:35:00","14:12:00","11:15:00","07:00:00","11:40:00",null,"11:15:00","08:35:00","09:10:00","11:05:00","07:50:00","10:35:00","11:15:00"],["05:25:00","07:55:00","07:25:00","09:15:00","08:15:00","08:30:00","09:15:00","10:05:00","08:55:00",null,"09:15:00","10:00:00","08:55:00",null,"07:30:00","12:20:00","09:40:00",null,null,"07:25:00","07:15:00","08:50:00","09:30:00","10:35:00","09:40:00","08:15:00","09:30:00","07:30:00","10:50:00","09:10:00","10:45:00","07:20:00","07:30:00",null,"08:15:00","08:45:00","11:30:00","07:45:00",null,"09:25:00","07:50:00","08:40:00",null,"09:35:00","08:35:00","07:25:00","09:30:00","07:50:00","09:00:00","09:30:00"],["03:17:30","03:22:30","06:47:30","07:22:30","06:22:30","06:10:00","06:22:30","05:02:30","04:22:30",null,"04:37:30","07:40:00","06:52:30",null,"06:25:00","07:40:00","06:35:00",null,null,"05:52:30","02:22:30","06:15:00","10:15:00","05:17:30","06:40:00","04:02:30","06:35:00","05:10:00","05:25:00","07:35:00","07:27:30","06:10:00","06:15:00",null,"05:32:30","06:17:30","07:05:00","06:42:30",null,"06:32:30","03:05:00","07:20:00",null,"06:27:30","04:17:30","05:27:30","06:20:00","03:55:00","06:05:00","06:30:00"],["07:09:17","07:10:00","07:00:00","06:02:09","07:33:34","07:15:00","09:10:43","08:42:51","07:50:00",null,"07:42:51","09:54:17","08:08:34","06:50:00","06:18:34","10:09:17","06:30:43",null,null,"05:16:26",null,"08:00:00",null,"10:16:26","08:40:00","07:25:00","09:11:26","06:00:43","07:24:17","08:49:17","09:53:34","05:28:34","07:51:26",null,"06:52:51","07:58:34","10:43:34","07:47:09",null,"06:26:26","07:50:00","07:21:26",null,"09:21:26","07:12:51","07:00:00","09:37:09","07:03:34","07:59:17","08:57:51"],["08:41:26","00:00:00","00:50:00","06:25:43","03:27:09","02:30:00","00:17:09","02:44:17","00:00:00",null,"06:08:34","00:28:34","01:32:51",null,"02:22:51","08:42:51","06:18:34",null,null,"04:17:09",null,"01:40:00",null,"01:51:26","05:00:00","01:40:00","01:51:26","02:58:34","03:25:43","02:04:17","02:34:17","01:51:26","00:42:51",null,"02:44:17","01:32:51","04:38:34","00:08:34",null,"05:57:09","00:00:00","02:37:09",null,"01:21:26","02:44:17","00:00:00","00:14:17","01:32:51","02:01:26","01:04:17"],["03:17:30","03:00:00","06:35:00","05:46:04","06:01:47","05:32:30","06:20:21","04:21:26","03:50:00",null,"03:51:26","07:37:09","06:29:17",null,"05:49:17","06:34:39","05:00:21",null,null,"04:48:13",null,"05:50:00",null,"05:08:13","06:10:00","03:37:30","06:25:43","04:25:21","03:42:09","07:24:39","07:01:47","05:14:17","06:15:00",null,"04:51:26","05:54:17","06:41:47","06:42:30",null,"05:03:13","03:05:00","06:40:43",null,"06:20:43","03:36:26","05:15:00","06:20:00","03:31:47","05:34:39","06:13:56"],["-00:12:30","00:32:30","04:22:30","03:15:00","03:42:30","02:47:30","03:20:00","01:32:30","00:37:30",null,"02:22:30","01:45:00","02:57:30",null,"03:55:00","04:02:30","04:37:30",null,null,"03:40:00",null,"02:25:00",null,"01:40:00","01:50:00","02:05:00","02:55:00","03:12:30","02:00:00","06:07:30","04:25:00","03:50:00","03:00:00",null,"03:02:30","02:27:30","04:42:30","05:07:30",null,"04:00:00","00:00:00","05:00:00",null,"02:27:30","00:57:30","01:57:30","01:30:00","00:32:30","02:57:30","02:22:30"],["00:12:30","00:32:30","04:22:30","03:15:00","03:42:30","02:47:30","03:20:00","01:32:30","00:37:30",null,"02:22:30","01:45:00","02:57:30",null,"03:55:00","04:02:30","04:37:30",null,null,"03:40:00",null,"02:25:00",null,"01:40:00","01:50:00","02:05:00","02:55:00","03:12:30","02:00:00","06:07:30","04:25:00","03:50:00","03:00:00",null,"03:02:30","02:27:30","04:42:30","05:07:30",null,"04:00:00","00:00:00","05:00:00",null,"02:27:30","00:57:30","01:57:30","01:30:00","00:32:30","02:57:30","02:22:30"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>id<\/th>\n      <th>shift_work<\/th>\n      <th>wd<\/th>\n      <th>fd<\/th>\n      <th>so_w<\/th>\n      <th>se_w<\/th>\n      <th>sd_w<\/th>\n      <th>msw<\/th>\n      <th>so_f<\/th>\n      <th>se_f<\/th>\n      <th>sd_f<\/th>\n      <th>msf<\/th>\n      <th>sd_week<\/th>\n      <th>sloss_week<\/th>\n      <th>msf_sc<\/th>\n      <th>sjl_rel<\/th>\n      <th>sjl<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tp","pageLength":6,"scrollX":true,"columnDefs":[{"className":"dt-right","targets":[1,3,4]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[6,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 
 ---
 
 ## Documentation
 
-`mctq` is fully documented. Learn more in [gipsousp.github.io/mctq](gipsousp.github.io/mctq).
+We spent a lot of time documenting the package, so the user can be assured that he will have all the information needed to operate and understand the mechanics behind each computation.
 
-&lt;iframe src="https://gipsousp.github.io/mctq/reference/msf_sc.html" width="100%" height="400px"&gt;&lt;/iframe&gt;
+&lt;iframe src="https://gipsousp.github.io/mctq/reference/msf_sc.html" width="100%" height="300px"&gt;&lt;/iframe&gt;
 
 ---
 
@@ -396,16 +279,11 @@ class: chapter-slide
 
 # Final remarks
 
-???
-
-04:31 -&gt; 05:00
-
 ---
 
 ## Notes
 
-* `mctq` is [maturing](https://lifecycle.r-lib.org/articles/stages.html)
-* `mctq` is currently under a [rOpenSci peer review](https://github.com/ropensci/software-review/issues/434). We plan to submit it to CRAN soon after the review process ends.
+* `mctq` is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434). We plan to submit it to CRAN soon after the review process ends.
 * We plan to invite the MCTQ authors to review and author the package
 * An article about `mctq` will be published soon
 

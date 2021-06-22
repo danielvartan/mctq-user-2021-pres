@@ -42,13 +42,13 @@ xaringanExtra::use_webcam()
 library(metathis)
 meta() %>%
   meta_general(
-    description = "An introduction to the {mctq} package.",
+    description = "A brief introduction to the {mctq} package.",
     generator = "xaringan and remark.js") %>% 
   meta_name("github-repo" = "gipsousp/mctq.user2021") %>% 
   meta_social(
     title = "{mctq}: An R Package for the Munich ChronoType Questionnaire",
     url = "https://gipsousp.github.io/mctq.user2021",
-    image = "https://gipsousp.github.io/mctq.user2021/cover.png",
+    image = "https://gipsousp.github.io/mctq.user2021/img/cover.png",
     image_alt = "The first slide of the Introduction to the {mctq} Package presentation",
     og_type = "website",
     og_author = "Daniel Vartanian",
@@ -67,7 +67,7 @@ The aim of `mctq` is to facilitate the work of sleep and chronobiology scientist
 ]
 
 .pull-right[
-```{r, echo = FALSE, fig.align = "center", out.width = "50%"}
+```{r, echo = FALSE, fig.align = "center", fig.alt = "Hex logo of the {mctq} R package", out.width = "50%"}
 knitr::include_graphics("img/logo.png")
 ```
 
@@ -76,71 +76,25 @@ Code repository: [https://github.com/gipsousp/mctq](https://github.com/gipsousp/
 Documentation website: [https://gipsousp.github.io/mctq](https://gipsousp.github.io/mctq)
 ]
 
-???
-
-00:00 -> 00:30
-
----
-
-## Authors
-
-.custom_1[
-__[Daniel Vartanian](https://github.com/danielvartan)__. Author, maintainer, copyright holder. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0001-7782-759X)
-
-__[Ana Amelia Benedito-Silva](https://github.com/AnaAmeliaBeneditoSIlva)__. Author, scientific advisor. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0003-4976-2623)
-
-__[Mario Pedrazzoli](https://github.com/pedrazzo)__. Author, scientific advisor. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0002-5257-591X)
-
-__[Jonathan Keane](https://github.com/jonkeane)__. Reviewer. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0001-7087-9776)
-
-__[Mario Andre Leocadio-Miguel](https://github.com/leocadio-miguel)__. Reviewer. [`r fontawesome::fa("orcid", fill = "#A6CE39")`](https://orcid.org/0000-0002-7248-3529)
-
-__[Interdisciplinary Sleep Research Group (GIPSO)](http://each.usp.br/gipso)__. Funder.
-
-__[University of Sao Paulo (USP)](http://usp.br/)__. Funder.
-]
-
 ---
 
 class: chapter-slide
 
-# What is MCTQ?
-
-???
-
-00:31 -> 01:30
-
----
-
-## A (very) brief history of time and life
-
-.pull-left[
-```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
-knitr::include_graphics("https://media.giphy.com/media/l1J9RYDHqVp5phcYw/giphy.gif")
-```
-]
-
-.pull-right[
-```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
-knitr::include_graphics("https://media.giphy.com/media/JDENkPiyQoCFW/giphy.gif")
-```
-]
+# What is the MCTQ?
 
 ---
 
 ## Chronotypes: temporal phenotypes
 
-See also: Roenneberg, Pilz, Zerbini, & Winnebeck ([2019](https://doi.org/10.3390/biology8030054)).
+.pull-left[
+The MCTQ questionnaire is a chronotyping tool that measures peoples’ sleep-wake behavior, using it as a proxy to assess circadian phenotypes. That is, temporal characteristics expressed in periods of about a day, usually represented by diurnal preferences in a morning-evening spectrum.
+]
 
-```{r, echo = FALSE, out.width = "50%", fig.align = "center"}
+.pull.right[
+```{r, echo = FALSE, out.width = "50%", fig.align = "center", fig.alt = "A gif animation showing a 'morning' and an 'evening' dog with a legend that says 'Morning people vs Me'."}
 knitr::include_graphics("https://media.giphy.com/media/3o7aD0v27NBhhOfdXW/giphy.gif")
 ```
-
----
-
-background-image: url("img/article_1.png")
-background-position: center
-background-size: contain
+]
 
 ---
 
@@ -156,48 +110,11 @@ background-size: contain
 
 ---
 
-class: chapter-slide
-
-# The problem(s)
-
-???
-
-01:31 -> 02:30
-
----
-
 ## Main challenges
 
 * MCTQ requires a lot of date/time manipulation
-* MCTQ deals with temporal objects detached from a timeline
 * Lack of consistency in computations
 * Inconsistencies can lead to irreproducible results
-
----
-
-## Temporal objects
-
-.pull-left[
-Temporal objects comes with more levels of abstraction.
-
-* Time is not metrical
-* Time data can assume many formats
-* Time is cyclical
-* Time is relational (itself does not exist)
-
-See also: [Why Don't We Have Metric Time? | Answers With Joe](https://youtu.be/kUIYI34CdkE).
-]
-
-.pull-right[
-```{r, echo = FALSE, out.width = "100%", fig.align = "center"}
-knitr::include_graphics("https://media.giphy.com/media/3o6MbjnP31zfxSI2Zi/giphy.gif")
-```
-]
-
-???
-
-* Duodecimal (base 12) and sexagesimal (base 60) systems.
-* Time frames (e.g., 24, 12, 60)
 
 ---
 
@@ -205,13 +122,11 @@ class: chapter-slide
 
 # The {mctq} package
 
-???
-
-02:31 -> 04:30
-
 ---
 
 ## Installation
+
+At the moment, `mctq` is under a [software peer review]((https://github.com/ropensci/software-review/issues/434)) with the rOpenSci initiative and can only be installed with a remote installer like the {remotes} or {pak} package.
 
 ``` {r, eval = FALSE}
 # install.packages("pak")
@@ -222,7 +137,6 @@ pak::pkg_install("gipsousp/mctq")
 library(mctq)
 ```
 
-
 ---
 
 ## Conversion
@@ -232,8 +146,6 @@ library(mctq)
 ```{r, message = FALSE}
 # From decimal hours to `hms`
 convert(6.5, "hms", input_unit = "H")
-# From radians to `Duration`
-convert(1.308997, "Duration", input_unit = "rad")
 # From `character` `HM AM/PM ` to `hms`
 convert("10:00 PM", "hms", orders = "IMp")
 ```
@@ -301,19 +213,9 @@ sjl_rel(msw, msf)
 
 ---
 
-## Utilities
+## Utilities and data
 
-In addition to `convert()`, `mctq` is also equipped with many other utility functions.
-
-```{r}
-random_mctq(model = "standard") %>% head(5)
-```
-
----
-
-## Data
-
-The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
+In addition to `convert()`, `mctq` is also equipped with many other utility functions. The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
 
 ```{r, echo = FALSE, out.width = "100%", out.height = "100%"}
 library(DT)
@@ -330,10 +232,11 @@ DT::datatable(mctq::pretty_mctq(mctq::micro_mctq),
 
 ## Documentation
 
-`mctq` is fully documented. Learn more in [gipsousp.github.io/mctq](gipsousp.github.io/mctq).
+We spent a lot of time documenting the package, so the user can be assured that he will have all the information needed to operate and understand the mechanics behind each computation.
 
 ```{r, echo = FALSE}
-knitr::include_url("https://gipsousp.github.io/mctq/reference/msf_sc.html")
+knitr::include_url("https://gipsousp.github.io/mctq/reference/msf_sc.html",
+                   height = "300px")
 ```
 
 ---
@@ -342,16 +245,11 @@ class: chapter-slide
 
 # Final remarks
 
-???
-
-04:31 -> 05:00
-
 ---
 
 ## Notes
 
-* `mctq` is [maturing](https://lifecycle.r-lib.org/articles/stages.html)
-* `mctq` is currently under a [rOpenSci peer review](https://github.com/ropensci/software-review/issues/434). We plan to submit it to CRAN soon after the review process ends.
+* `mctq` is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434). We plan to submit it to CRAN soon after the review process ends.
 * We plan to invite the MCTQ authors to review and author the package
 * An article about `mctq` will be published soon
 
