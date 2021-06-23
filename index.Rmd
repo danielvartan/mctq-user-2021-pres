@@ -51,9 +51,9 @@ library(mctq)
 ## Overview
 
 .pull-left[
-`mctq` is an R package that provides a complete and consistent toolkit to process the Munich ChronoType Questionnaire (MCTQ), a quantitative and validated tool to assess chronotypes using peoples’ sleep behavior presented by Till Roenneberg, Anna Wirz-Justice, and Martha Merrow in [2003](https://doi.org/10.1177/0748730402239679).
+{mctq} is an R package that provides a complete and consistent toolkit to process the Munich ChronoType Questionnaire (MCTQ), a validated tool to assess chronotypes using peoples’ sleep behavior presented by Till Roenneberg, Anna Wirz-Justice, and Martha Merrow in [2003](https://doi.org/10.1177/0748730402239679).
 
-The aim of `mctq` is to facilitate the work of sleep and chronobiology scientists with MCTQ data while also helping with research reproducibility.
+The aim of {mctq} is to facilitate the work of sleep and chronobiology scientists with MCTQ data while also helping with research reproducibility.
 ]
 
 .pull-right[
@@ -148,9 +148,10 @@ class: chapter-slide
 
 ## Notes
 
-* `mctq` is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434). We plan to submit it to CRAN soon after the review process ends.
+* {mctq} is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434)
+* We plan to submit {mctq} to CRAN soon after the review process ends
 * We plan to invite the MCTQ authors to review and author the package
-* An article about `mctq` will be published soon
+* An article about {mctq} will be published soon
 
 ---
 
