@@ -28,7 +28,7 @@ xaringanExtra::use_webcam()
 library(metathis)
 meta() %>%
   meta_general(
-    description = "A brief introduction to the {mctq} package.",
+    description = "A brief introduction of the {mctq} package made for the useR! 2021 conference.",
     generator = "xaringan and remark.js") %>% 
   meta_name("github-repo" = "gipsousp/mctq.user2021") %>% 
   meta_social(
