@@ -18,22 +18,8 @@ knitr::opts_chunk$set(message = FALSE,
 ```
 
 ```{r, xaringanExtra, include = FALSE}
-## Learn more at https://pkg.garrickadenbuie.com/xaringanExtra/#/
-
-# xaringanExtra::use_animate_css()
-# xaringanExtra::use_broadcast()
 xaringanExtra::use_clipboard()
-# xaringanExtra::use_editable(expires = 1)
 xaringanExtra::use_extra_styles(hover_code_line = TRUE)
-# xaringanExtra::use_fit_screen()
-# xaringanExtra::use_freezeframe(responsive = FALSE)
-# xaringanExtra::use_logo(image_url = "img/logo.png")
-# xaringanExtra::use_panelset()
-# xaringanExtra::use_scribble()
-# xaringanExtra::use_search(show_icon = TRUE)
-# xaringanExtra::use_share_again()
-# xaringanExtra::use_slide_tone()
-# xaringanExtra::use_tachyons()
 xaringanExtra::use_tile_view()
 xaringanExtra::use_webcam()
 ```
@@ -55,6 +41,10 @@ meta() %>%
     twitter_card_type = "summary_large_image",
     twitter_creator = "@danielvartan"
   )
+```
+
+```{r, load, include = FALSE}
+library(mctq)
 ```
 
 
@@ -80,21 +70,7 @@ Documentation website: [https://gipsousp.github.io/mctq](https://gipsousp.github
 
 class: chapter-slide
 
-# What is the MCTQ?
-
----
-
-## Chronotypes: temporal phenotypes
-
-.pull-left[
-The MCTQ questionnaire is a chronotyping tool that measures peoples’ sleep-wake behavior, using it as a proxy to assess circadian phenotypes. That is, temporal characteristics expressed in periods of about a day, usually represented by diurnal preferences in a morning-evening spectrum.
-]
-
-.pull.right[
-```{r, echo = FALSE, out.width = "50%", fig.align = "center", fig.alt = "A gif animation showing a 'morning' and an 'evening' dog with a legend that says 'Morning people vs Me'."}
-knitr::include_graphics("https://media.giphy.com/media/3o7aD0v27NBhhOfdXW/giphy.gif")
-```
-]
+# The MCTQ questionnaire
 
 ---
 
@@ -124,39 +100,7 @@ class: chapter-slide
 
 ---
 
-## Installation
-
-At the moment, `mctq` is under a [software peer review]((https://github.com/ropensci/software-review/issues/434)) with the rOpenSci initiative and can only be installed with a remote installer like the {remotes} or {pak} package.
-
-``` {r, eval = FALSE}
-# install.packages("pak")
-pak::pkg_install("gipsousp/mctq")
-```
-
-```{r, message = FALSE}
-library(mctq)
-```
-
----
-
-## Conversion
-
-`mctq` works with a set of object classes specially created to hold time values. These classes can be found in the [lubridate](https://lubridate.tidyverse.org/) and [hms](https://hms.tidyverse.org/) packages from [tidyverse](https://www.tidyverse.org/packages/). If your data do not conform to the object classes required, you can use `mctq` `convert()` function to convert it.
-
-```{r, message = FALSE}
-# From decimal hours to `hms`
-convert(6.5, "hms", input_unit = "H")
-# From `character` `HM AM/PM ` to `hms`
-convert("10:00 PM", "hms", orders = "IMp")
-```
-
----
-
 ## Workdays and work-free days variables
-
-After your data is set to start, just use the `mctq` functions below to process it.
-
-Note that the `mctq` functions uses a similar naming scheme to that used in the MCTQ publications. That makes it easy to find and apply any computation necessary.
 
 * `fd()`: compute MCTQ work-free days
 * `so()`: compute MCTQ local time of sleep onset
@@ -169,24 +113,7 @@ Note that the `mctq` functions uses a similar naming scheme to that used in the 
 
 ---
 
-## Workdays and work-free days variables
-
-Example:
-
-```{r, message = FALSE}
-# Local time of preparing to sleep on workdays
-sprep_w <- c(hms::parse_hms("23:45:00"), hms::parse_hms("02:15:00"))
-# Sleep latency or time to fall asleep after preparing to sleep on workdays
-slat_w <- c(lubridate::dminutes(30), lubridate::dminutes(90))
-# Local time of sleep onset on workdays
-so(sprep_w, slat_w)
-```
-
----
-
 ## Combining workdays and work-free days variables
-
-For computations combining workdays and work-free days, use:
 
 * `sd_week()`: compute MCTQ average weekly sleep duration
 * `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ Shift)
@@ -204,39 +131,11 @@ Example:
 
 ```{r, message = FALSE}
 # Local time of mid-sleep on workdays
-msw <- c(hms::parse_hms("02:05:00"), hms::parse_hms("04:05:00"))
+msw <- c(hms::parse_hm("02:05"), hms::parse_hm("04:05"))
 # Local time of mid-sleep on work-free days
-msf <- c(hms::parse_hms("23:05:00"), hms::parse_hms("08:30:00"))
+msf <- c(hms::parse_hm("23:05"), hms::parse_hm("08:30"))
 # Relative social jetlag
 sjl_rel(msw, msf)
-```
-
----
-
-## Utilities and data
-
-In addition to `convert()`, `mctq` is also equipped with many other utility functions. The package also provides __fictional__ datasets of the standard, micro, and shift MCTQ versions __for testing and learning purposes__.
-
-```{r, echo = FALSE, out.width = "100%", out.height = "100%"}
-library(DT)
-library(mctq)
-DT::datatable(mctq::pretty_mctq(mctq::micro_mctq), 
-              extensions = "KeyTable",
-              filter = "none",
-              options = list(dom = "tp",
-                             pageLength = 6,
-                             scrollX = TRUE))
-```
-
----
-
-## Documentation
-
-We spent a lot of time documenting the package, so the user can be assured that he will have all the information needed to operate and understand the mechanics behind each computation.
-
-```{r, echo = FALSE}
-knitr::include_url("https://gipsousp.github.io/mctq/reference/msf_sc.html",
-                   height = "300px")
 ```
 
 ---
