@@ -4,7 +4,7 @@
     <title>{mctq}:   An R Package for the Munich ChronoType Questionnaire</title>
     <meta charset="utf-8" />
     <meta name="author" content="Daniel Vartanian" />
-    <script src="libs/header-attrs-2.9/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/useR.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/useR-fonts.css" rel="stylesheet" />
     <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
@@ -18,19 +18,19 @@
     <script id="xaringanExtra-webcam-options" type="application/json">{"width":"200","height":"200","margin":"1em"}</script>
     <meta name="description" content="A brief introduction of the {mctq} package made for the useR! 2021 conference."/>
     <meta name="generator" content="xaringan and remark.js"/>
-    <meta name="github-repo" content="gipsousp/mctq.user2021"/>
+    <meta name="github-repo" content="gipso/mctq.user2021"/>
     <meta name="twitter:title" content="{mctq}: An R Package for the Munich ChronoType Questionnaire"/>
     <meta name="twitter:description" content="A brief introduction of the {mctq} package made for the useR! 2021 conference."/>
-    <meta name="twitter:url" content="https://gipsousp.github.io/mctq.user2021"/>
-    <meta name="twitter:image:src" content="https://gipsousp.github.io/mctq.user2021/img/cover.png"/>
+    <meta name="twitter:url" content="https://gipso.github.io/mctq.user2021"/>
+    <meta name="twitter:image" content="https://gipso.github.io/mctq.user2021/img/cover.png"/>
     <meta name="twitter:image:alt" content="The first slide of the Introduction to the {mctq} Package presentation"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@danielvartan"/>
     <meta name="twitter:site" content="@danielvartan"/>
     <meta property="og:title" content="{mctq}: An R Package for the Munich ChronoType Questionnaire"/>
     <meta property="og:description" content="A brief introduction of the {mctq} package made for the useR! 2021 conference."/>
-    <meta property="og:url" content="https://gipsousp.github.io/mctq.user2021"/>
-    <meta property="og:image" content="https://gipsousp.github.io/mctq.user2021/img/cover.png"/>
+    <meta property="og:url" content="https://gipso.github.io/mctq.user2021"/>
+    <meta property="og:image" content="https://gipso.github.io/mctq.user2021/img/cover.png"/>
     <meta property="og:image:alt" content="The first slide of the Introduction to the {mctq} Package presentation"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
@@ -43,13 +43,13 @@
     <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="img/apple-touch-icon-76x76.png">
     <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="img/apple-touch-icon-60x60.png">
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9NNBLRQZXL"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFKJ580382"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-9NNBLRQZXL');
+      gtag('config', 'G-NFKJ580382');
     </script>
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
@@ -84,9 +84,9 @@ The aim of {mctq} is to facilitate the work of sleep and chronobiology scientist
 .pull-right[
 &lt;img src="img/logo.png" title="Hex logo of the {mctq} R package" alt="Hex logo of the {mctq} R package" width="50%" style="display: block; margin: auto;" /&gt;
 
-Code repository: [https://github.com/gipsousp/mctq](https://github.com/gipsousp/mctq)
+Code repository: [https://github.com/gipso/mctq](https://github.com/gipso/mctq)
 
-Documentation website: [https://gipsousp.github.io/mctq](https://gipsousp.github.io/mctq)
+Documentation website: [https://gipso.github.io/mctq](https://gipso.github.io/mctq)
 ]
 
 ---
@@ -111,9 +111,9 @@ background-size: contain
 
 ## Main challenges
 
-* MCTQ requires a lot of date/time manipulation
-* Lack of consistency in computations
-* Inconsistencies can lead to irreproducible results
+* MCTQ requires a lot of date/time manipulation.
+* Lack of consistency in computations.
+* Inconsistencies can lead to irreproducible results.
 
 ---
 
@@ -125,26 +125,26 @@ class: chapter-slide
 
 ## Workdays and work-free days variables
 
-* `fd()`: compute MCTQ work-free days
-* `so()`: compute MCTQ local time of sleep onset
-* `gu()`: compute MCTQ local time of getting out of bed
-* `sd()`: compute MCTQ sleep duration
-* `tbt()`: compute MCTQ total time in bed
-* `ms()`: compute MCTQ local time of mid-sleep
-* `napd()`: compute MCTQ nap duration (only for MCTQ Shift)
-* `sd24()`: compute MCTQ 24 hours sleep duration (only for MCTQ Shift)
+* `fd()`: compute MCTQ work-free days.
+* `so()`: compute MCTQ local time of sleep onset.
+* `gu()`: compute MCTQ local time of getting out of bed.
+* `sdu()`: compute MCTQ sleep duration.
+* `tbt()`: compute MCTQ total time in bed.
+* `msl()`: compute MCTQ local time of mid-sleep.
+* `napd()`: compute MCTQ nap duration (only for MCTQ Shift).
+* `sd24()`: compute MCTQ 24 hours sleep duration (only for MCTQ Shift).
 
 ---
 
 ## Combining workdays and work-free days variables
 
-* `sd_week()`: compute MCTQ average weekly sleep duration
-* `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ Shift)
-* `sloss_week()`: compute MCTQ weekly sleep loss
-* `le_week()`: compute MCTQ average weekly light exposure
-* `msf_sc()`: compute MCTQ chronotype or corrected local time of mid-sleep on work-free days
-* `sjl_rel()` and `sjl()`: compute MCTQ social jet lag
-* `sjl_weighted()`: compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift)
+* `sd_week()`: compute MCTQ average weekly sleep duration.
+* `sd_overall()`: compute MCTQ overall sleep duration (only for MCTQ Shift).
+* `sloss_week()`: compute MCTQ weekly sleep loss.
+* `le_week()`: compute MCTQ average weekly light exposure.
+* `msf_sc()`: compute MCTQ chronotype or corrected local time of mid-sleep on work-free days.
+* `sjl_rel()` and `sjl()`: compute MCTQ social jet lag.
+* `sjl_weighted()`: compute MCTQ absolute social jetlag across all shifts (only for MCTQ Shift).
 
 ---
 
@@ -176,10 +176,10 @@ class: chapter-slide
 
 ## Notes
 
-* {mctq} is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434)
-* We plan to submit {mctq} to CRAN soon after the review process ends
-* We plan to invite the MCTQ authors to review and author the package
-* An article about {mctq} will be published soon
+* {mctq} is currently under a [rOpenSci software peer review](https://github.com/ropensci/software-review/issues/434).
+* We plan to submit {mctq} to CRAN soon after the review process ends.
+* We plan to invite the MCTQ authors to review and author the package.
+* An article about {mctq} will be published soon.
 
 ---
 
